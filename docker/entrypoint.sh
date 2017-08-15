@@ -15,7 +15,6 @@ EOF
 }
 
 while getopts ":hu:p:i:s:q:" OPT; do
-	echo $OPT
 	case $OPT in
 		h)  usage; exit 0;;
 		u)  USERNAME=$OPTARG;;
@@ -37,9 +36,10 @@ username = ${USERNAME}
 password = ${PASSWORD}
 EOF
 
-[ -z "${QUANTITY}"] || echo "quantity = ${QUANTITY}" >> ~/.esniper
-[ -z "${TIME}"] || echo "time = ${TIME}" >> ~/.esniper
+[ -z "${QUANTITY}" ] || (echo "quantity = ${QUANTITY}" >> ~/.esniper)
+[ -z "${TIME}" ] || (echo "time = ${TIME}" >> ~/.esniper)
 
+[ ! -f ~/auctions.dat ] || rm ~/auctions.dat 
 echo > ~/auctions.dat
 for ITEM in "${ITEMS[@]}"; do
   NUMBER=$(echo $ITEM | cut -f1 -d,)

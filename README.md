@@ -8,6 +8,6 @@ Dockerized version of esniper, a lightweight eBay sniping tool
     -h  Show this screen.
     -u  Username.
     -p  Password.
-    -i  Number of item to bid on with max bid separated by comma. Can be given multiple times.
+    -i  Number of item to bid on with max bid separated by comma. Can be given multiple times. 
     -q  Quantity of items to buy [default: 1].
     -s  Defines when to place bid in seconds before end of auction [default: 10].

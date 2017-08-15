@@ -13,7 +13,7 @@ RUN cd /tmp/ && \
   make && \
   make install && \
   cd /tmp && \
-  rm -rf /tmp/esniper
+  rm -rf /tmp/esniper 
 
 RUN ([ -d /var/lib/esniper ] || mkdir -p /var/lib/esniper) && \
     ([ -d /var/lib/esniper/logs ] || mkdir -p /var/lib/esniper/logs) && \
