@@ -2,22 +2,18 @@ FROM alpine
 MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 
 ENV ESNIPER_VERSION 2.33.0
-ENV ESNIPER_URL "http://netcologne.dl.sourceforge.net/project/esniper/esniper/2.33.0/esniper-2-33-0.tgz"
 
-RUN apk add --update build-base curl-dev bash && \
+RUN apk add --update build-base curl-dev bash git && \
   rm -rf /var/cache/apk/*
 
 RUN cd /tmp/ && \
-  BUILDDIR=/tmp/esniper-${ESNIPER_VERSION//./-} && \
-  echo "Fetching ${ESNIPER_URL}..." && \
-  wget -q "${ESNIPER_URL}" -O- | tar zxf - && \
-  echo "Changing to build dir ${BUILDDIR}..." && \
-  cd ${BUILDDIR} && \
+  git clone -b ${ESNIPER_VERSION} --depth 1 https://github.com/mruettgers/esniper.git && \
+  cd /tmp/esniper && \
   ./configure && \
   make && \
   make install && \
   cd /tmp && \
-  rm -rf ${BUILDDIR} 
+  rm -rf /tmp/esniper
 
 RUN ([ -d /var/lib/esniper ] || mkdir -p /var/lib/esniper) && \
     ([ -d /var/lib/esniper/logs ] || mkdir -p /var/lib/esniper/logs) && \
