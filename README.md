@@ -5,7 +5,7 @@ Dockerized version of esniper, a lightweight eBay sniping tool
     docker-esniper -u <username> -p <password> -i <item-number,max bid> [-i <item number,max bid>] [-q <quantity to buy>] [-s <time to place bid>]
 
 ## Options
-    -h  Show this screen.
+    -h  Show usage information.
     -u  Username.
     -p  Password.
     -i  Number of item to bid on with max bid separated by comma. Can be given multiple times. 
