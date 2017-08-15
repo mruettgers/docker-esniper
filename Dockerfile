@@ -7,13 +7,15 @@ RUN apk add --update build-base curl-dev bash && \
   rm -rf /var/cache/apk/*
 
 RUN cd /tmp/ && \
-  wget -q http://netcologne.dl.sourceforge.net/project/esniper/esniper/${ESNIPER_VERSION}/esniper-${ESNIPER_VERSION//./-}.tgz -O -|tar zxvf - && \
   BUILDDIR=/tmp/esniper-${ESNIPER_VERSION//./-} && \
+  wget -q http://netcologne.dl.sourceforge.net/project/esniper/esniper/${ESNIPER_VERSION}/esniper-${ESNIPER_VERSION//./-}.tgz -O esniper.tgz && \
+  tar zxvf esniper.tgz && \
   cd ${BUILDDIR} && \
   ./configure && \
   make && \
   make install && \
   cd /tmp && \
+  rm /tmp/esniper.tgz && \
   rm -rf ${BUILDDIR} 
 
 RUN ([ -d /var/lib/esniper ] || mkdir -p /var/lib/esniper) && \
