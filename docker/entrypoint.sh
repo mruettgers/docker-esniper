@@ -37,7 +37,7 @@ password = ${PASSWORD}
 EOF
 
 [ -z "${QUANTITY}" ] || (echo "quantity = ${QUANTITY}" >> ~/.esniper)
-[ -z "${TIME}" ] || (echo "time = ${TIME}" >> ~/.esniper)
+[ -z "${TIME}" ] || (echo "seconds = ${TIME}" >> ~/.esniper)
 
 [ ! -f ~/auctions.dat ] || rm ~/auctions.dat 
 echo > ~/auctions.dat
