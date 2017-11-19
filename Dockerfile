@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 
-ENV ESNIPER_VERSION 2.33.0
+ENV ESNIPER_VERSION master
 
 RUN apk add --update build-base curl-dev bash git && \
   rm -rf /var/cache/apk/*
